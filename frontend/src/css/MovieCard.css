@@ -213,3 +213,24 @@
     font-size: 1.2rem;
   }
 }
+
+/* Back face content layout and scrollable overview */
+.movie-card-back .back-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.movie-card-back .back-content h3 {
+  margin: 0 0 0.25rem 0;
+}
+
+.movie-card-back .back-content .overview {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  line-height: 1.3;
+}
