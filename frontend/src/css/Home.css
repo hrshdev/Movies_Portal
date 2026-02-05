@@ -1,0 +1,229 @@
+.home {
+  padding: 2rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-form {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  align-items: stretch; /* Added to ensure height match */
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+  display: block;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #666;
+}
+
+.search-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #e50914;
+  color: white;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background-color: #f40612;
+}
+
+/* Suggestions dropdown under search */
+.suggestions {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.suggestions-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.suggestion-item {
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  color: #eaeaea;
+  font-size: 0.95rem;
+}
+
+.suggestion-item:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Clear button in the search bar */
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex; /* Ensures children align to the wrapper's height */
+  align-items: center; 
+}
+/* Reserve space and style for inline clear button inside input */
+.search-input {
+  padding-right: 2.5rem;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  bottom: 0; /* Stretching from top to bottom ensures the middle is the middle */
+  margin: auto 0; /* Works with top/bottom 0 to center vertically */
+  
+  height: 32px; /* Fixed size for a consistent hit area */
+  width: 32px;
+  
+  background: transparent;
+  border: none;
+  color: #aaaaaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+  
+  /* Force the 'x' character to the dead center of the 32x32 box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 10;
+}
+
+/* Recent searches list (shown when input focused) */
+.recent-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.recent-item {
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  color: #cfcfcf;
+}
+
+.recent-item:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.recent-header span {
+  color: #dcdcdc;
+  font-weight: 600;
+}
+
+.clear-history {
+  background: transparent;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem 0.75rem;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #eaeaea;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #e50914;
+  color: white;
+  border-color: transparent;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.no-results {
+  text-align: center;
+  color: #ddd;
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+}
+
+
+@media (max-width: 639px) {
+  .home {
+    padding: 1rem 0;
+  }
+
+  .search-form {
+    margin-bottom: 1rem;
+  }
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive: 3 / 2 / 1 columns */
+@media (max-width: 1200px) {
+  .movies-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .movies-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .movies-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+}

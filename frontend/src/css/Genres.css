@@ -1,0 +1,29 @@
+.genres-page {
+  padding: 1rem;
+}
+
+.genres-header h2 {
+  margin-bottom: 0.25rem;
+}
+
+.genres-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.5rem;
+}
+
+.genre-chip {
+  background: #1a1a1a;
+  color: #eaeaea;
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.genre-chip.active {
+  background: #e50914;
+  color: white;
+  border-color: transparent;
+}
