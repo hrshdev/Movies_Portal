@@ -37,7 +37,7 @@ function Footer() {
 
         {/* Website */}
         <a 
-          href="https://hrshdev.netlify.app/" 
+          href="https://hrshdev.pages.dev/" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="footer-link" 
