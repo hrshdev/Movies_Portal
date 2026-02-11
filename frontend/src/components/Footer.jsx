@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p className="copyright">&copy; {currentYear} Hrsh_Dev. All rights reserved.</p>
+        <p className="copyright">&copy; {currentYear} - Harson Vadivel - All rights reserved.</p>
       </div>
       <div className="footer-links">
         {/* GitHub */}
