@@ -2,18 +2,18 @@ import { createContext, useState, useContext, useEffect } from "react";
 
 const MovieContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useMovieContext = () => {
     return useContext(MovieContext);
 }
 
 export const MovieProvider = ({ children }) => {
-    const [favorites, setFavorites] = useState({})
+    const [favorites, setFavorites] = useState(() => {
 
-    useEffect(() => {
+
         const storedFavorites = localStorage.getItem("favorites")
-
-        if (storedFavorites) setFavorites(JSON.parse(storedFavorites))
-    }, [])
+        return storedFavorites ? JSON.parse(storedFavorites) : {}
+    })
 
     useEffect(() => {
         localStorage.setItem("favorites", JSON.stringify(favorites))
@@ -35,7 +35,7 @@ export const MovieProvider = ({ children }) => {
     }   
 
     const isFavorite = (movieId) => {
-        return favorites.hasOwnProperty(movieId)
+        return Object.prototype.hasOwnProperty.call(favorites, movieId)
     }   
 
     const value = {

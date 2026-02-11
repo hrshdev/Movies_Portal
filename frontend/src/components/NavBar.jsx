@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import '../css/NavBar.css';
 import logo from '../assets/HrshDev.svg';
 
@@ -17,9 +17,9 @@ function NavBar() {
                 </Link>
             </div>
             <div className="navbar-links">
-                <Link to="/" className="nav-link" onClick={resetHome}>Home</Link>
-                <Link to="/genres" className="nav-link">Genres</Link>
-                <Link to="/favorites" className="nav-link">Favorites</Link>
+                <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} onClick={resetHome}>Home</NavLink>
+                <NavLink to="/genres" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>Genres</NavLink>
+                <NavLink to="/favorites" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>Favorites</NavLink> 
             </div>
         </nav>
     )
