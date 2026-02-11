@@ -5,6 +5,7 @@ import Genres from './pages/Genres'
 import { Routes, Route } from 'react-router-dom'
 import { MovieProvider } from './contexts/MovieContext'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </main>
+        <Footer/>
       </MovieProvider>
     </>
   )
