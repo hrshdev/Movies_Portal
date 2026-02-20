@@ -50,7 +50,7 @@ function Footer() {
 
         {/* Gmail */}
         <a 
-          href="mailto:hrshde.work@gmail.com" 
+          href="mailto:hrshdev.work@gmail.com" 
           className="footer-link" 
           aria-label="Gmail"
         >
