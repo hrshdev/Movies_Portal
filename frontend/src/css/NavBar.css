@@ -24,9 +24,10 @@
   width: 36px;
   height: 36px;
   display: block;
-  border-radius: 50%; /* This creates the circle */
-  overflow: hidden;    /* Ensures the image doesn't bleed past the rounded edges */
-  object-fit: cover;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Optional: adds a background if the logo is smaller than the circle */
+  object-fit: contain;       /* Keeps aspect ratio and fits inside the box */
+  padding: 4px;             /* Gives the logo some breathing room inside the circle */
 }
 
 .brand-title {
