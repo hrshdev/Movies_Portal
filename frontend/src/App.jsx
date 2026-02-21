@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import { MovieProvider } from './contexts/MovieContext'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           </Routes>
         </main>
         <Footer/>
+        <ScrollToTop />
       </MovieProvider>
     </>
   )
