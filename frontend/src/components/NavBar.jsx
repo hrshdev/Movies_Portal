@@ -13,7 +13,7 @@ function NavBar() {
             <div className="navbar-brand">
                 <Link to="/" onClick={resetHome} className="brand-link">
                     <img src={logo} alt="HrshDev logo" className="brand-logo" />
-                    <span className="brand-title">Movie Portal</span>
+                    <span className="brand-title">Movies Portal</span>
                 </Link>
             </div>
             <div className="navbar-links">
