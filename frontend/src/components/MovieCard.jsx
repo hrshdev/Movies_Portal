@@ -47,9 +47,10 @@ function MovieCard({ movie }) {
     }
 
     return (
-        <div className={`movie-card ${flipped ? 'flipped' : ''}`} onClick={handleFlip}>
+        <div className={`movie-card ${flipped ? 'flipped' : ''}`}>
             <div className="movie-card-inner">
-                <div className="movie-card-front">
+                {/* Front: entire surface is clickable to flip */}
+                <div className="movie-card-front" onClick={handleFlip}>
                     <div className="movie-poster">
                         {movie.poster_path ? (
                             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
@@ -74,6 +75,7 @@ function MovieCard({ movie }) {
                     </div>
                 </div>
 
+                {/* Back: clicking content does NOT flip; only the button does */}
                 <div className="movie-card-back">
                     {loadingDetails ? (
                         <div className="back-loading">Loading details...</div>
@@ -85,6 +87,7 @@ function MovieCard({ movie }) {
                             <p><strong>Release:</strong> {details?.release_date || movie.release_date || 'N/A'}</p>
                             <p><strong>User Rating:</strong> {details?.vote_average ?? movie.vote_average ?? 'N/A'}</p>
                             <p><strong>Certificate:</strong> {getCertification(details || movie)}</p>
+                            <button className="flip-back-btn" onClick={handleFlip}>↩ Flip Back</button>
                         </div>
                     )}
                 </div>
