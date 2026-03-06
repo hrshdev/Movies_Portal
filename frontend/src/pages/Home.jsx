@@ -19,6 +19,7 @@ function Home() {
     // ── Keyboard navigation ──────────────────────────────────────────
     const [activeIndex, setActiveIndex] = useState(-1)
     const inputRef = useRef(null)
+    const wrapperRef = useRef(null)
 
     // Reset highlight whenever the visible list changes
     useEffect(() => { setActiveIndex(-1) }, [suggestions, recentSearches, isInputFocused])
@@ -183,9 +184,27 @@ function Home() {
         setIsInputFocused(false)
     }
 
+    const skipSuggestionRef = useRef(false)
+
+    // Close dropdown when clicking outside the input wrapper
+    useEffect(() => {
+        function handleOutsideClick(e) {
+            if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+                setSuggestions([])
+                setIsInputFocused(false)
+            }
+        }
+        document.addEventListener('mousedown', handleOutsideClick)
+        return () => document.removeEventListener('mousedown', handleOutsideClick)
+    }, [])
+
     // Live suggestions (debounced)
     useEffect(() => {
         if (debounceRef.current) clearTimeout(debounceRef.current)
+        if (skipSuggestionRef.current) {
+            skipSuggestionRef.current = false
+            return
+        }
         if (!searchQuery || searchQuery.trim().length < 2) {
             setSuggestions([])
             return
@@ -216,8 +235,7 @@ function Home() {
         setSearchQuery("")
         setSuggestions([])
         setIsInputFocused(false)
-        loadPopularMovies(1)
-        setLastSearchTerm("")
+        // stays on current results — user must trigger a new search to change page
     }
 
     function onFocusInput() { setIsInputFocused(true) }
@@ -256,7 +274,7 @@ function Home() {
     return (
         <div className="home">
             <form onSubmit={handleSearch} className="search-form">
-                <div className="input-wrapper">
+                <div className="input-wrapper" ref={wrapperRef}>
                     <input
                         ref={inputRef}
                         type="text"
@@ -265,7 +283,6 @@ function Home() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         onFocus={onFocusInput}
-                        onBlur={onBlurInput}
                         onKeyDown={handleKeyDown}
                         autoComplete="off"
                         aria-autocomplete="list"
@@ -309,7 +326,8 @@ function Home() {
                                             aria-selected={idx === activeIndex}
                                             onMouseDown={() => {
                                                 performSearch(r, 1)
-                                                setSearchQuery("")
+                                                skipSuggestionRef.current = true
+                                                setSearchQuery(r)
                                                 setSuggestions([])
                                                 setIsInputFocused(false)
                                                 inputRef.current?.blur()
