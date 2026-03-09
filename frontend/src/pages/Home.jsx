@@ -182,6 +182,7 @@ function Home() {
         await performSearch(searchQuery, 1)
         setSuggestions([])
         setIsInputFocused(false)
+        inputRef.current?.blur()
     }
 
     const skipSuggestionRef = useRef(false)
@@ -238,7 +239,12 @@ function Home() {
         // stays on current results — user must trigger a new search to change page
     }
 
-    function onFocusInput() { setIsInputFocused(true) }
+    function onFocusInput(e) {
+        setIsInputFocused(true)
+        // Move cursor to end of existing text
+        const len = e.target.value.length
+        e.target.setSelectionRange(len, len)
+    }
     // Delay hiding so clicks on dropdown items register first
     function onBlurInput() { setTimeout(() => setIsInputFocused(false), 150) }
 
